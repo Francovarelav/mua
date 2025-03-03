@@ -1,0 +1,21 @@
+.circular-gallery {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    cursor: grab;
+    background-color: #101010;
+  }
+  
+  .circular-gallery:active {
+    cursor: grabbing;
+  }
+
+  @media (max-width: 768px) {
+    .circular-gallery {
+      width: 100%;
+      height: 600px;
+      overflow: hidden;
+      cursor: grab;
+      background-color: #101010;
+    }
+  }

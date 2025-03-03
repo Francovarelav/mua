@@ -1,0 +1,15 @@
+#root {
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
+
+
+/* Importar los estilos existentes */
+@import url('/css/styles.css');
+@import url('/css/index.css');
+@import url('/css/utilities.css');
+
+/* Agregar los estilos de las fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Sen:wght@400..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
