@@ -22,7 +22,6 @@ import sf3 from '../assets/serafines/3.png';
 import sf4 from '../assets/serafines/4.png';
 import sf5 from '../assets/serafines/5.png';
 import sf6 from '../assets/serafines/6.png';
-import sf7 from '../assets/serafines/7.png';
 
 // import 18 from gloria
 import g1 from '../assets/gloria/1.png';
@@ -157,6 +156,8 @@ const Proyecto = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedPlano, setSelectedPlano] = useState(null);
+  const [isPlanoLoading, setIsPlanoLoading] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -168,32 +169,26 @@ const Proyecto = () => {
     window.addEventListener('resize', handleResize);
 
     // Precargar imágenes
-    const images = [ln1, ln2, ln3, ln4, sf1, sf2, sf3, g1, g2, g3, g4, c1, c2, c3, c4];
-    let loadedImagesCount = 0;
-
-    images.forEach((image) => {
-      const img = new Image();
-      img.src = image;
-      img.onload = () => {
-        loadedImagesCount++;
-        if (loadedImagesCount === images.length) {
-          setIsLoading(false);
-          setIsVisible(true);
-        }
-      };
-    });
-
-    // Detener el loader después de 3 segundos
-    const loaderTimeout = setTimeout(() => {
-      setIsLoading(false);
+    const timer = setTimeout(() => {
       setIsVisible(true);
-    }, 3000); // 3000 ms = 3 segundos
+      setIsLoading(false);
+    }, 500);
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && selectedPlano) {
+        setSelectedPlano(null);
+        document.body.style.overflow = 'auto';
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
 
     return () => {
       window.removeEventListener('resize', handleResize);
-      clearTimeout(loaderTimeout); // Limpiar el timeout al desmontar
+      window.removeEventListener('keydown', handleKeyDown);
+      clearTimeout(timer);
     };
-  }, []);
+  }, [selectedPlano]);
 
   const proyectosData = {
     'las-nubes': {
@@ -210,7 +205,7 @@ const Proyecto = () => {
           { image: ln3, text: '' },
           { image: ln4, text: '' },
         ],
-        bend: isMobile ? 0 : 2.5,
+        bend: 0,
         textColor: "#ffffff",
         borderRadius: 0.05,
         font: isMobile ? "bold 18px Sen" : "bold 24px Sen"
@@ -222,7 +217,7 @@ const Proyecto = () => {
       year: '2023',
       description: 'Residencia moderna que fusiona elegancia y funcionalidad...',
       mainImage: sf1,
-      planos: [sf4, sf5, sf6, sf7], // Imágenes de planos para Serafines
+      planos: [sf4, sf5, sf6], // Imágenes de planos para Serafines
       circleConfig: {
         items: [
           { image: sf1, text: '' },
@@ -230,7 +225,7 @@ const Proyecto = () => {
           { image: sf3, text: '' },
           { image: sf1, text: '' },
         ],
-        bend: isMobile ? 0 : 2.5,
+        bend: 0,
         textColor: "#ffffff",
         borderRadius: 0.05,
         font: isMobile ? "bold 18px Sen" : "bold 24px Sen"
@@ -260,7 +255,7 @@ const Proyecto = () => {
           { image: g17, text: '' },
           { image: g18, text: '' },
         ],
-        bend: isMobile ? 0 : 2.5,
+        bend: 0,
         textColor: "#ffffff",
         borderRadius: 0.05,
         font: isMobile ? "bold 18px Sen" : "bold 24px Sen"
@@ -280,7 +275,7 @@ const Proyecto = () => {
           { image: c3, text: '' },
           { image: c4, text: '' },
         ],
-        bend: isMobile ? 0 : 2.5,
+        bend: 0,
         textColor: "#ffffff",
         borderRadius: 0.05,
         font: isMobile ? "bold 18px Sen" : "bold 24px Sen"
@@ -300,7 +295,7 @@ const Proyecto = () => {
           { image: q3, text: '' },
           { image: q4, text: '' },
         ],
-        bend: isMobile ? 0 : 2.5,
+        bend: 0,
         textColor: "#ffffff",
         borderRadius: 0.05,
         font: isMobile ? "bold 18px Sen" : "bold 24px Sen"
@@ -321,7 +316,7 @@ const Proyecto = () => {
           { image: f5, text: '' },
           { image: f6, text: '' },
         ],
-        bend: isMobile ? 0 : 2.5,
+        bend: 0,
         textColor: "#ffffff",
         borderRadius: 0.05,
         font: isMobile ? "bold 18px Sen" : "bold 24px Sen"
@@ -344,7 +339,7 @@ const Proyecto = () => {
           { image: d7, text: '' },
           { image: d9, text: '' },
         ],
-        bend: isMobile ? 0 : 2.5,
+        bend: 0,
         textColor: "#ffffff",
         borderRadius: 0.05,
         font: isMobile ? "bold 18px Sen" : "bold 24px Sen"
@@ -365,7 +360,7 @@ const Proyecto = () => {
           { image: is2, text: '' },
           { image: is1, text: '' },
         ],
-        bend: isMobile ? 0 : 2.5,
+        bend: 0,
         textColor: "#ffffff",
         borderRadius: 0.05,
         font: isMobile ? "bold 18px Sen" : "bold 24px Sen"
@@ -387,6 +382,32 @@ const Proyecto = () => {
           { image: isal6, text: '' },
           { image: isal7, text: '' },
         ],
+        bend: 0,
+        textColor: "#ffffff",
+        borderRadius: 0.05,
+        font: isMobile ? "bold 18px Sen" : "bold 24px Sen"
+      },
+    },
+    'innate-puebla': {
+      title: 'Innate Puebla',
+      location: 'Puebla',
+      year: '2023',
+      description: 'Proyecto residencial que integra espacios abiertos y luz natural...',
+      mainImage: isal2,
+      planos: [isal1], // Imágenes de planos para Inate Saltillo
+      circleConfig: {
+        items: [
+          { image: isal2, text: '' },
+          { image: isal3, text: '' },
+          { image: isal4, text: '' },
+          { image: isal5, text: '' },
+          { image: isal6, text: '' },
+          { image: isal7, text: '' },
+        ],
+        bend: 0,
+        textColor: "#ffffff",
+        borderRadius: 0.05,
+        font: isMobile ? "bold 18px Sen" : "bold 24px Sen"
       },
     },
     'airbnb': {
@@ -406,7 +427,7 @@ const Proyecto = () => {
           { image: air12, text: '' },
           { image: air13, text: '' },
         ],
-        bend: isMobile ? 0 : 2.5,
+        bend: 0,
         textColor: "#ffffff",
         borderRadius: 0.05,
         font: isMobile ? "bold 18px Sen" : "bold 24px Sen"
@@ -431,7 +452,7 @@ const Proyecto = () => {
           { image: ad9, text: '' },
           { image: ad10, text: '' },
         ],
-        bend: isMobile ? 0 : 2.5,
+        bend: 0,
         textColor: "#ffffff",
         borderRadius: 0.05,
         font: isMobile ? "bold 18px Sen" : "bold 24px Sen"
@@ -455,7 +476,7 @@ const Proyecto = () => {
           { image: ddc7, text: '' },
           { image: ddc8, text: '' },
         ],
-        bend: isMobile ? 0 : 2.5,
+        bend: 0,
         textColor: "#ffffff",
         borderRadius: 0.05,
         font: isMobile ? "bold 18px Sen" : "bold 24px Sen"
@@ -482,7 +503,7 @@ const Proyecto = () => {
           { image: dq10, text: '' },
           { image: dq13, text: '' },
         ],
-        bend: isMobile ? 0 : 2.5,
+        bend: 0,
         textColor: "#ffffff",
         borderRadius: 0.05,
         font: isMobile ? "bold 18px Sen" : "bold 24px Sen"
@@ -505,6 +526,30 @@ const Proyecto = () => {
   if (isLoading) {
     return <Loader />;
   }
+
+  const openPlano = (plano) => {
+    setIsPlanoLoading(true);
+    
+    // Preload the image
+    const img = new Image();
+    img.src = plano;
+    img.onload = () => {
+      setSelectedPlano(plano);
+      setIsPlanoLoading(false);
+    };
+    
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closePlano = () => {
+    setSelectedPlano(null);
+    setIsPlanoLoading(false);
+    document.body.style.overflow = 'auto';
+  };
+
+  const handlePlanoLoad = () => {
+    setIsPlanoLoading(false);
+  };
 
   return (
     <div className={`proyecto-container ${isVisible ? 'visible' : ''}`}>
@@ -533,14 +578,47 @@ const Proyecto = () => {
         {proyecto.planos && proyecto.planos.length > 0 && (
           <div className="proyecto-planos">
             <h2>Planos Arquitectónicos</h2>
+            <p className="planos-info">Haz clic en cualquier plano para verlo en pantalla completa</p>
             <div className="plano-image">
               {proyecto.planos.map((plano, index) => (
-                <img key={index} src={plano} alt={`Planos ${index + 1} de ${proyecto.title}`} />
+                <div key={index} className="plano-item" onClick={() => openPlano(plano)}>
+                  <img 
+                    src={plano} 
+                    alt={`Planos ${index + 1} de ${proyecto.title}`} 
+                  />
+                  <div className="plano-overlay">
+                    <span className="zoom-icon">🔍</span>
+                    <span className="zoom-text">Click para ampliar</span>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
         )}
       </div>
+
+      {/* Simple Fullscreen View */}
+      {selectedPlano && (
+        <div className="fullscreen-overlay" onClick={closePlano}>
+          <div className="fullscreen-content" onClick={(e) => e.stopPropagation()}>
+            {isPlanoLoading && (
+              <div className="plano-loading">Cargando...</div>
+            )}
+            <img 
+              src={selectedPlano} 
+              alt="Plano en pantalla completa"
+              onLoad={handlePlanoLoad}
+            />
+            <button 
+              className="fullscreen-close" 
+              onClick={closePlano}
+              aria-label="Cerrar vista de pantalla completa"
+            >
+              ×
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

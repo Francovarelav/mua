@@ -2,6 +2,15 @@ body {
   background-color: black;
   padding: 0;
   margin: 0;
+  font-family: 'Avenir', 'Sen', sans-serif;
+}
+
+@font-face {
+  font-family: 'Avenir';
+  src: url('https://fonts.cdnfonts.com/css/avenir') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 .landing {
@@ -305,7 +314,7 @@ html {
   content: '';
   position: absolute;
   left: 50%;
-  top: 0;
+  top: 250px;
   height: 100%;
   width: 1px;
   background: linear-gradient(180deg, 
@@ -335,7 +344,7 @@ html {
 .intro-title {
   position: relative;
   color: white;
-  font-family: 'Sen', sans-serif;
+  font-family: 'Avenir', 'Sen', sans-serif;
   font-size: 5rem;
   text-align: center;
   margin-bottom: 100px;
@@ -406,6 +415,14 @@ html {
   white-space: pre-line;
   position: relative;
   z-index: 2;
+}
+
+.intro-text.left{
+  text-align: left;
+}
+
+.intro-text.right{
+  text-align: right;
 }
 
 /* Decoración para el texto */
@@ -510,11 +527,11 @@ html {
 
 .section-title {
   color: white;
-  font-family: 'Sen', sans-serif;
-  font-size: 5rem;
+  font-family: 'Avenir', 'Sen', sans-serif;
+  font-size: 3rem;
   text-align: center;
-  margin-bottom: 80px;
-  letter-spacing: 6px;
+  margin-bottom: 60px;
+  letter-spacing: 4px;
   text-transform: uppercase;
 }
 
@@ -584,7 +601,7 @@ html {
   width: 100%;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.05);
-  height: 150px;
+  height: 200px;
   position: relative;
 }
 
@@ -599,7 +616,7 @@ html {
 }
 
 .brands-track img {
-  height: 150px;
+  height: 200px;
   object-fit: contain;
   width: auto;
   min-width: 300px;
@@ -711,12 +728,13 @@ html {
 }
 
 .subProyTitle{
-    color: white;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 30px;
-    text-align: center;
-    text-transform: uppercase;
-    font-weight: lighter;
+  color: white;
+  font-family: 'Avenir', 'Sen', sans-serif;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 40px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 .view-project-button {
@@ -774,7 +792,6 @@ html {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
     z-index: -1;
     box-sizing: border-box;
     padding: 0 0 30px 30px;
@@ -1018,7 +1035,7 @@ html {
   top: 0;
   left: 0;
   z-index: 1;
-  opacity: 50%;
+  opacity: 90%;
 }
 
 .consTitle{

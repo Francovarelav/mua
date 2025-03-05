@@ -4,7 +4,7 @@ import logo from './assets/MUA-Logo.png'
 import arrow from './assets/icons/arrow.png'
 import introImage from './assets/intro.png'
 import introImage2 from './assets/intro-1.png'
-import mapImage from './assets/sections/client-section/mapa.png'
+import mapImage from './assets/mapanew.png'
 import brandsTop from './assets/sections/client-section/brands-top.png'
 import brandsBottom from './assets/sections/client-section/brands-bottom.png'
 import PixelCard from './components/PixelCard'
@@ -12,6 +12,7 @@ import { BsWhatsapp, BsInstagram, BsTiktok } from 'react-icons/bs';
 import { MdEmail } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import ConsComp from './components/ConsComp'
+import innatePuebla from './assets/innatePuebla.jpg'
 
 {/**IMAGES */}
 import lasNubes from './assets/sections/proyects-section/las-nubes.png'
@@ -243,14 +244,14 @@ const Page = () => {
         {/* First Intro Section */}
         <section id="intro" className="intro-section">
           <div className="intro-container">
-            <h2 className="intro-title">HOLA</h2>
+            <h2 className="intro-title">QUIENES SOMOS</h2>
             
             <div className="intro-content">
               <div className="intro-image-container">
                 <img src={introImage} alt="Intro" className="intro-image" />
               </div>
               
-              <div className="intro-text">
+              <div className="intro-text left">
                 <p>
                   Mi nombre es Carlos Ramón Martínez Flores 
                   y es un honor presentarles 
@@ -277,7 +278,7 @@ const Page = () => {
         <section className="intro-section">
           <div className="intro-container">
             <div className="intro-content">
-              <div className="intro-text">
+              <div className="intro-text right">
                 <p>
                   El proceso de diseño que MUA Arquitectos 
                   utiliza comienza con una comprensión 
@@ -289,8 +290,7 @@ const Page = () => {
                   avanzadas de modelado 3D y técnicas 
                   de visualización. La colaboración 
                   constante con ingenieros, constructores y 
-                  otros profesionales 
-                  asegura que cada proyecto 
+                  otros profesionales asegura que cada proyecto 
                   sea ejecutado a la perfección.
                 </p>
               </div>
@@ -439,8 +439,18 @@ const Page = () => {
             </div>
           </PixelCard>
 
+          <PixelCard variant="pink" projectId="innate-puebla">
+            <div className="card-info" style={{backgroundImage: `url(${innatePuebla})`}}>
+              <h1 className="title-card">
+                Innate
+              </h1>
+              <p className="location-card">Puebla</p>
+              <p className="year-card">2023</p>
+            </div>
+          </PixelCard>
+
           <PixelCard variant="yellow" projectId="airbnb">
-            <div className="card-info" style={{backgroundImage: `url(${airbnb})`}}>
+            <div className="card-info" style={{backgroundImage: `url(${airbnb})`, backgroundPosition: 'center center'}}>
               <h1 className="title-card">
                 Airbnb
               </h1>

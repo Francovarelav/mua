@@ -110,24 +110,24 @@ const VARIANTS = {
     noFocus: false
   },
   blue: {
-    activeColor: "#e0f2fe",
+    activeColor: "#e0e0e0",
     gap: 10,
     speed: 25,
-    colors: "#e0f2fe,#7dd3fc,#0ea5e9",
+    colors: "#e0e0e0,#a0a0a0,#707070",
     noFocus: false
   },
   yellow: {
-    activeColor: "#fef08a",
+    activeColor: "#e0e0e0",
     gap: 3,
     speed: 20,
-    colors: "#fef08a,#fde047,#eab308",
+    colors: "#e0e0e0,#a0a0a0,#707070",
     noFocus: false
   },
   pink: {
-    activeColor: "#fecdd3",
+    activeColor: "#e0e0e0",
     gap: 6,
     speed: 80,
-    colors: "#fecdd3,#fda4af,#e11d48",
+    colors: "#e0e0e0,#a0a0a0,#707070",
     noFocus: true
   }
 };
